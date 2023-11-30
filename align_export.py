@@ -127,9 +127,16 @@ points = pc.calculate(depth_frame)
 # PLYファイルへの保存オプションを設定
 ply = rs.save_to_ply("/home/sowa/prog/pointcloud/pointcloud_ply_data/potato_1011.ply")
 
-# オプションを設定（バイナリ形式、法線）
-#ply.set_option(rs.save_to_ply.option_ply_binary, True)
-#ply.set_option(rs.save_to_ply.option_ply_normals, True)
+# オプションを設定（バイナリ形式、法線、色情報）
+ply.set_option(rs.save_to_ply.option_ply_binary, True)
+ply.set_option(rs.save_to_ply.option_ply_normals, True)
+
+# 色情報を保存するためのオプション
+ply.set_option(rs.save_to_ply.option_ply_texture, True)
+
+# PLYファイルを保存
+ply.process(depth_frame)
+
 
 # PLYファイルを表示
 pcd = o3d.io.read_point_cloud("/home/sowa/prog/pointcloud/pointcloud_ply_data/potato_1011.ply")

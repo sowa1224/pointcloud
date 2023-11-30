@@ -7,10 +7,12 @@ from mpl_toolkits.mplot3d import Axes3D
 
 # CSVファイルのパス
 #csv_file_path = "/home/sowa/prog/pointcloud/csv/carrot_filtered.csv"
-csv_file_path = "/home/sowa/prog/pointcloud/csv/potato_filtered_1011.csv"
+#csv_file_path ="/home/sowa/prog/pointcloud/csv/potato_hsv_eye_1017.csv"
+csv_file_path = "/home/sowa/prog/pointcloud/csv/potato_1118/peel_filtered/potato_peel_1118_0109_filtered.csv"
 # CSVファイルを読み込む
-df = pd.read_csv(csv_file_path)
 
+df = pd.read_csv(csv_file_path, header=None)
+df.columns = ['X', 'Y', 'Z', 'R', 'G', 'B', 'nX', 'nY', 'nZ', 'H', 'S', 'V']
 # 座標データを抽出
 points = df[['X', 'Y', 'Z']].values
 
